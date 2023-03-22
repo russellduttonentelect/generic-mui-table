@@ -1,16 +1,9 @@
 import { SortDirection } from '@mui/material';
-import {
-  useQueryParams,
-  withDefault,
-  StringParam,
-  NumberParam
-} from 'use-query-params';
+import { useQueryParams, withDefault, StringParam, NumberParam } from 'use-query-params';
 
 const OrderParam = {
   encode: (order: SortDirection) => order as string,
-  decode: (
-    order: string | null | undefined | (string | null)[]
-  ): SortDirection =>
+  decode: (order: string | null | undefined | (string | null)[]): SortDirection =>
     typeof order === 'string' ? (order as SortDirection) : 'asc'
 };
 

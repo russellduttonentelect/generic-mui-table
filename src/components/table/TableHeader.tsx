@@ -6,24 +6,17 @@ import {
   TableSortLabel,
   Typography
 } from '@mui/material';
-import { TableHeaderConfig } from 'src/types';
+import { TableHeaderConfig } from '../../types';
 import { useTableContext } from './TableContextProvider';
 
 interface TableHeaderProps {
   order: SortDirection;
   orderBy: string;
   headers: TableHeaderConfig[];
-  handleSort: (
-    property: string
-  ) => (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
+  handleSort: (property: string) => (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
 }
 
-export const TableHeader = ({
-  order,
-  orderBy,
-  headers,
-  handleSort
-}: TableHeaderProps) => {
+export const TableHeader = ({ order, orderBy, headers, handleSort }: TableHeaderProps) => {
   const { disableSort } = useTableContext();
   return (
     <TableHead>
@@ -31,12 +24,10 @@ export const TableHeader = ({
         {headers.map((header) => (
           <TableCell
             key={header.id}
-            align="left"
+            align='left'
             sortDirection={orderBy === header.id ? order : false}
             sx={{
-              ...(header.allowGrouping
-                ? { borderRight: 1, borderColor: 'grey.300' }
-                : {})
+              ...(header.allowGrouping ? { borderRight: 1, borderColor: 'grey.300' } : {})
             }}
           >
             {!disableSort ? (
@@ -49,7 +40,7 @@ export const TableHeader = ({
                 {header.label}
               </TableSortLabel>
             ) : (
-              <Typography variant="body2" fontWeight={600}>
+              <Typography variant='body2' fontWeight={600}>
                 {header.label}
               </Typography>
             )}

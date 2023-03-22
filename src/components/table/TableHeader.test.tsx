@@ -1,7 +1,5 @@
 import { Table } from '@mui/material';
 import { render } from '@testing-library/react';
-import React from 'react';
-import { QueryParamProvider } from 'use-query-params';
 import { TableContextProvider, TableHeader } from '.';
 
 describe('Testing Table Header component rendering', () => {
@@ -21,18 +19,11 @@ describe('Testing Table Header component rendering', () => {
       }
     ];
     const header = (
-      <QueryParamProvider>
-        <TableContextProvider>
-          <Table>
-            <TableHeader
-              headers={headers}
-              handleSort={jest.fn()}
-              order="asc"
-              orderBy="id"
-            />
-          </Table>
-        </TableContextProvider>
-      </QueryParamProvider>
+      <TableContextProvider>
+        <Table>
+          <TableHeader headers={headers} handleSort={jest.fn()} order='asc' orderBy='id' />
+        </Table>
+      </TableContextProvider>
     );
 
     const { baseElement } = render(header);

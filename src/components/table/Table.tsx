@@ -2,8 +2,7 @@ import { Box, Table as MuiTable, TableContainer } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { TableFooter, TableHeader, TableBody } from '.';
 import { useTableContext } from './TableContextProvider';
-import { TableRowData } from 'src/types';
-import { FetchRows } from 'src/types/FetchRows.type';
+import { TableRowData, FetchRows } from '../../types';
 
 interface ITable {
   headers: { id: string; label: string }[];
@@ -13,16 +12,8 @@ interface ITable {
   fetchCondition?: boolean;
 }
 
-export const Table = ({
-  headers,
-  fetchRows,
-  search,
-  filters,
-  fetchCondition = true
-}: ITable) => {
-  const [currentRows, setCurrentRows] = useState<TableRowData[] | undefined>(
-    undefined
-  );
+export const Table = ({ headers, fetchRows, search, filters, fetchCondition = true }: ITable) => {
+  const [currentRows, setCurrentRows] = useState<TableRowData[] | undefined>(undefined);
   const [totalRows, setTotalRows] = useState(0);
 
   const {

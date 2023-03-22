@@ -18,14 +18,12 @@ export const TableFooter = ({
   return (
     <TablePagination
       rowsPerPageOptions={[5, 10, 25, 50]}
-      component="div"
+      component='div'
       count={rowCount}
       rowsPerPage={pageSize}
       page={page}
       onPageChange={(_event, page) => handlePageChange(page)}
-      onRowsPerPageChange={(event) =>
-        handlePageSizeChange(parseInt(event.target.value, 10))
-      }
+      onRowsPerPageChange={(event) => handlePageSizeChange(parseInt(event.target.value, 10))}
       showFirstButton
       showLastButton
     />

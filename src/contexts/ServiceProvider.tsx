@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from 'axios';
 import { useEnvContext } from './EnvProvider';
 import { useFeature } from 'flagged';
 import { logRequest, logResponse } from 'lib';
-import { createContext, PropsWithChildren, useContext } from 'react';
+import { createContext, FC, useContext } from 'react';
 
 type Services = {
   api: AxiosInstance;
@@ -10,7 +10,7 @@ type Services = {
 
 const ServiceContext = createContext<Services | undefined>(undefined);
 
-export const ServiceProvider = ({ children }: PropsWithChildren) => {
+export const ServiceProvider: FC = ({ children }) => {
   const { apiUrl } = useEnvContext();
   const hasRequestLogging = useFeature('requestLogging') as boolean;
 

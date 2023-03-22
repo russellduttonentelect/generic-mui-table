@@ -1,5 +1,5 @@
 import { SortDirection } from '@mui/material';
-import { createContext, FC, useContext } from 'react';
+import { createContext, PropsWithChildren, useContext } from 'react';
 import { useTableQueryParams } from './hooks';
 
 interface TableContextInterface {
@@ -19,14 +19,12 @@ interface DefaultProviderProps {
   disableSort?: boolean;
 }
 
-const TableContext = createContext<TableContextInterface | undefined>(
-  undefined
-);
+const TableContext = createContext<TableContextInterface | undefined>(undefined);
 
-export const TableContextProvider: FC<DefaultProviderProps> = ({
+export const TableContextProvider = ({
   disableSort,
   children
-}) => {
+}: PropsWithChildren<DefaultProviderProps>) => {
   const {
     order,
     setOrder,
@@ -55,20 +53,14 @@ export const TableContextProvider: FC<DefaultProviderProps> = ({
     handlePageSizeChange
   };
 
-  return (
-    <TableContext.Provider value={startingValue}>
-      {children}
-    </TableContext.Provider>
-  );
+  return <TableContext.Provider value={startingValue}>{children}</TableContext.Provider>;
 };
 
 export const useTableContext = () => {
   const tableContext = useContext(TableContext);
 
   if (!tableContext) {
-    throw new Error(
-      'Cannot use Table Context outside of Table Context Provider'
-    );
+    throw new Error('Cannot use Table Context outside of Table Context Provider');
   }
 
   return tableContext;

@@ -1,15 +1,14 @@
 import { render } from '@testing-library/react';
 import { TableFooter } from '.';
 import { useTableQueryParams } from './hooks';
-import { QueryParamProvider } from 'use-query-params';
-import { RouteAdaptor } from 'src/common/routes/RouteAdaptor';
 import { MemoryRouter } from 'react-router-dom';
 
 describe('Table Footer tests', () => {
   test('should render the table footer correctly with sensible parameters', () => {
     const Footer = () => {
-      const { page, handlePageChange, pageSize, handlePageSizeChange } =
-        useTableQueryParams({ defaultPageSize: 10 });
+      const { page, handlePageChange, pageSize, handlePageSizeChange } = useTableQueryParams({
+        defaultPageSize: 10
+      });
       return (
         <TableFooter
           handlePageChange={handlePageChange}
@@ -23,9 +22,7 @@ describe('Table Footer tests', () => {
 
     const { baseElement } = render(
       <MemoryRouter>
-        <QueryParamProvider ReactRouterRoute={RouteAdaptor}>
-          <Footer />
-        </QueryParamProvider>
+        <Footer />
       </MemoryRouter>
     );
 
