@@ -2,10 +2,10 @@ import { Box, Table as MuiTable, TableContainer } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { TableFooter, TableHeader, TableBody } from '.';
 import { useTableContext } from './TableContextProvider';
-import { TableRowData, FetchRows } from '../../types';
+import { TableRowData, FetchRows, TableHeaderConfig } from '../../types';
 
 interface ITable {
-  headers: { id: string; label: string }[];
+  headers: TableHeaderConfig[];
   fetchRows: FetchRows<TableRowData>;
   search?: string;
   filters?: Record<string, string>;

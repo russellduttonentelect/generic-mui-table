@@ -1,5 +1,5 @@
 export type TableHeaderConfig = {
-  id: string;
+  key: string;
   label: string;
   allowGrouping?: boolean;
 };

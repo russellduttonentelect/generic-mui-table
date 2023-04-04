@@ -13,19 +13,19 @@ type Post = {
 
 const headers = [
   {
-    id: 'id',
+    key: 'id',
     label: 'ID'
   },
   {
-    id: 'userId',
+    key: 'userId',
     label: 'User ID'
   },
   {
-    id: 'title',
+    key: 'title',
     label: 'Title'
   },
   {
-    id: 'body',
+    key: 'body',
     label: 'Content'
   }
 ];
