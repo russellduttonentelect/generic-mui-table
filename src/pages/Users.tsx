@@ -45,7 +45,6 @@ const fetchUsers = async ({
   const totalCount = total.length;
   const totalPages = totalCount / pageSize;
 
-  console.log({ totalCount, totalPages });
   const users = total.slice(page * pageSize, page * pageSize + pageSize);
 
   return {
