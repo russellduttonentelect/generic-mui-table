@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import reactLogo from '../assets/react.svg';
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const [count, setCount] = useState(0);
@@ -22,6 +23,9 @@ export const Home = () => {
         </p>
       </div>
       <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
+      <Link to='posts'>Posts</Link>
+      <br />
+      <Link to='users'>Users</Link>
     </div>
   );
 };

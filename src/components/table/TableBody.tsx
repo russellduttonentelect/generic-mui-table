@@ -27,7 +27,7 @@ export const TableBody = ({ rows, headers }: TableBodyProps) => {
   const groupings = {};
   const spannedRows: string[] = [];
   if (groupedHeader) {
-    const rowValuesToGroup = rows.map((row) => get(row, groupedHeader.id));
+    const rowValuesToGroup = rows.map((row) => get(row, groupedHeader.key));
     const uniqueValues = uniq(rowValuesToGroup).filter(isString);
     uniqueValues.forEach((groupValue) => {
       const count = rowValuesToGroup.filter((value) => value === groupValue).length;
@@ -47,7 +47,7 @@ export const TableBody = ({ rows, headers }: TableBodyProps) => {
     return (
       <MuiTableBody>
         {rows.map((row, rowIndex) => {
-          const groupedHeaderValue = get(row, groupedHeader?.id ?? '', '') as string;
+          const groupedHeaderValue = get(row, groupedHeader?.key ?? '', '') as string;
           const displayGroupedValue = !spannedRows.includes(groupedHeaderValue);
 
           if (groupedHeader && displayGroupedValue) {
@@ -57,7 +57,7 @@ export const TableBody = ({ rows, headers }: TableBodyProps) => {
           return (
             <TableRow tabIndex={-1} key={rowIndex} data-testid={`row-${rowIndex}`}>
               {headers.map((header, cellIndex) => {
-                const cellValue = get(row, header.id, '');
+                const cellValue = get(row, header.key, '');
                 const groupingSpan = header.allowGrouping
                   ? get(groupings, groupedHeaderValue, 1)
                   : 1;
@@ -70,8 +70,8 @@ export const TableBody = ({ rows, headers }: TableBodyProps) => {
                   <TableCell
                     key={cellIndex}
                     component='th'
-                    id={`row-${rowIndex}-cell-${header.id}`}
-                    data-testid={`row-${rowIndex}-cell-${header.id}`}
+                    id={`row-${rowIndex}-cell-${header.key}`}
+                    data-testid={`row-${rowIndex}-cell-${header.key}`}
                     scope='row'
                     padding='normal'
                     rowSpan={groupingSpan}
@@ -99,7 +99,7 @@ export const TableBody = ({ rows, headers }: TableBodyProps) => {
     <MuiTableBody>
       {rows.length > 0 ? (
         rows.map((row, rowIndex) => {
-          const groupedHeaderValue = get(row, groupedHeader?.id ?? '', '') as string;
+          const groupedHeaderValue = get(row, groupedHeader?.key ?? '', '') as string;
           const displayGroupedValue = !spannedRows.includes(groupedHeaderValue);
 
           if (groupedHeader && displayGroupedValue) {
@@ -109,7 +109,7 @@ export const TableBody = ({ rows, headers }: TableBodyProps) => {
           return (
             <TableRow tabIndex={-1} key={rowIndex} data-testid={`row-${rowIndex}`}>
               {headers.map((header, cellIndex) => {
-                const cellValue = get(row, header.id, '');
+                const cellValue = get(row, header.key, '');
                 const groupingSpan = header.allowGrouping
                   ? get(groupings, groupedHeaderValue, 1)
                   : 1;
@@ -122,8 +122,8 @@ export const TableBody = ({ rows, headers }: TableBodyProps) => {
                   <TableCell
                     key={cellIndex}
                     component='th'
-                    id={`row-${rowIndex}-cell-${header.id}`}
-                    data-testid={`row-${rowIndex}-cell-${header.id}`}
+                    id={`row-${rowIndex}-cell-${header.key}`}
+                    data-testid={`row-${rowIndex}-cell-${header.key}`}
                     scope='row'
                     padding='normal'
                     rowSpan={groupingSpan}
